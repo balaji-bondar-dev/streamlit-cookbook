@@ -37,5 +37,22 @@ User receives a unified travel recommendation.
 4. Sequence Flow
    ![alt text](image-6.png)
 
-5. Conclusion
+5. Future Enhancement
+
+   Additional agents can be plugged into the architecture:
+
+   Weather Agent
+   Provides forecast information.
+   Visa Agent
+   Checks visa requirements.
+   Currency Agent
+   Exchange rates and budgeting.
+   Insurance Agent
+   Travel insurance recommendations.
+   Expense Agent
+   Trip cost optimization.
+   Notification Agent
+   Email/SMS updates.
+
+6. Conclusion
    This architecture implements a multi-agent AI travel planner in which independent domain-specific agents collaborate through a shared state (TravelState) and persistent PostgreSQL storage. The modular design enables scalability, maintainability, and future extensibility while producing a unified travel response for the user.
