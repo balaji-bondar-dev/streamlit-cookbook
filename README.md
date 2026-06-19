@@ -18,11 +18,6 @@ Structured final response generation
 
 ## ![alt text](image-5.png)
 
-                     |
-            Shared State (TravelState)
-                     |
-               PostgreSQL Database
-
 ![alt text](image-3.png)
 
 3. High-Level Workflow
