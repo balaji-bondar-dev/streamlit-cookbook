@@ -35,29 +35,7 @@ Final Response Agent combines outputs.
 User receives a unified travel recommendation.
 
 4. Sequence Flow
-
-User
-|
-v
-Prompt
-|
-+----> Flight Agent -------> Flight API
-|
-+----> Hotel Agent --------> Hotel API
-|
-+----> Itinerary Agent ----> Maps API
-|
-v
-Shared State (TravelState)
-|
-v
-PostgreSQL
-|
-v
-Final Response Agent
-|
-v
-User
+   ![alt text](image-6.png)
 
 5. Conclusion
    This architecture implements a multi-agent AI travel planner in which independent domain-specific agents collaborate through a shared state (TravelState) and persistent PostgreSQL storage. The modular design enables scalability, maintainability, and future extensibility while producing a unified travel response for the user.
