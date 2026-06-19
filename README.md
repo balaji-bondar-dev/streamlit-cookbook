@@ -35,7 +35,31 @@ Final Response Agent combines outputs.
 User receives a unified travel recommendation.
 
 4. Sequence Flow
-   ![alt text](image-6.png)
+
+```
+User
+ |
+ v
+Prompt
+ |
+ +----> Flight Agent -------> Flight API
+ |
+ +----> Hotel Agent --------> Hotel API
+ |
+ +----> Itinerary Agent ----> Maps API
+ |
+ v
+Shared State (TravelState)
+ |
+ v
+PostgreSQL
+ |
+ v
+Final Response Agent
+ |
+ v
+User
+```
 
 5. Future Enhancement
 
