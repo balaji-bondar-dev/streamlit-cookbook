@@ -6,9 +6,9 @@ import sys
 st.title("Streamlit Subprocess Runner")
 
 # Input field to pass data to app.py
-user_param = st.text_input("Optional parameter to pass:", "Hello from Main")
+user_param = st.text_input("Generate My Travel Plan", "Hello from Main")
 
-if st.button("Run app.py and Show Output"):
+if st.button("Generate My Travel Plan"):
     with st.spinner("Executing app.py..."):
         
         # Run app.py and capture console prints
@@ -20,9 +20,9 @@ if st.button("Run app.py and Show Output"):
         
         # Check if the script executed without errors
         if result.returncode == 0:
-            st.success("App executed successfully!")
+            #st.success("App executed successfully!")
             
-            st.subheader("Console Output From app.py:")
+            #st.subheader("Console Output From app.py:")
             # Use st.code or st.text to maintain terminal formatting
             st.code(result.stdout, language="bash")
             
