@@ -3,10 +3,10 @@ import streamlit as st
 import subprocess
 import sys
 
-st.title("Streamlit Subprocess Runner")
+#st.title("Streamlit Subprocess Runner")
 
 # Input field to pass data to app.py
-user_param = st.text_input("Generate My Travel Plan", "Hello from Main")
+user_param = st.text_input("", "Enter Travel Request...")
 
 if st.button("Generate My Travel Plan"):
     with st.spinner("Executing app.py..."):
