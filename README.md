@@ -16,28 +16,12 @@ Structured final response generation
 
 2. Architecture Diagram Components
 
-User
-|
-Prompt
-|
-
----
-
-| | | |
-Flight Agent Hotel Agent Itinerary Agent Final Response Agent
-| | | |
-Tools/API Tools/API Tools/API Tools/API
-\ | | /
-
----
+## ![alt text](image-5.png)
 
                      |
             Shared State (TravelState)
                      |
                PostgreSQL Database
-
-
-
 
 ![alt text](image-3.png)
 
