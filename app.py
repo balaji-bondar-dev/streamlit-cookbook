@@ -22,14 +22,6 @@ from langchain_groq import ChatGroq
 from tools.tavily_tool import tavily_search
 from tools.flight_tool import search_flight
 from dotenv import load_dotenv
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-# LLM
-llm = ChatGroq(
-    model="llama-3.3-70b-versatile"
-)
 
 # from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
@@ -37,7 +29,9 @@ import psycopg
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
 
-# load_dotenv()
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 
 # # if len(sys.argv) > 1:
 # #     print(f"Received input parameter: {sys.argv[1]}")
@@ -51,14 +45,14 @@ llm = ChatGroq(
 )
 
 #print(llm.invoke("What is the capital of France?"))
-messages = [
-    SystemMessage(content="You are a helpful assistant.Answer in one sentence."),
-    HumanMessage(content="What is the captial of france"),
-]
-response = llm.invoke(messages)
-# print("❯❯❯❯Final response ")
-print({response.type})
-print({response.content})
+# messages = [
+#     SystemMessage(content="You are a helpful assistant.Answer in one sentence."),
+#     HumanMessage(content="What is the captial of france"),
+# ]
+# response = llm.invoke(messages)
+# # print("❯❯❯❯Final response ")
+# print({response.type})
+# print({response.content})
 
 class TravelState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
