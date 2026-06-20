@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from typing import TypedDict,Annotated
 import operator
-
+os.system("pip install langchain-groq")
 
 # from langgraph.graph import StateGraph,START,END
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
@@ -13,7 +13,7 @@ from langchain_groq import ChatGroq
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
-os.system("pip install langchain-groq")
+
 load_dotenv()
 
 # if len(sys.argv) > 1:
