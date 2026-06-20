@@ -1,20 +1,18 @@
 import sys
 import os
+from dotenv import load_dotenv
 from typing import TypedDict,Annotated
 import operator
 
-#import psycopg
+
 from langgraph.graph import StateGraph,START,END
 from langgraph.checkpoint.postgres import PostgresSaver
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
 from langchain_groq import ChatGroq
-
-from dotenv import load_dotenv
+import psycopg
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
-
-
 
 load_dotenv()
 
