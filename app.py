@@ -9,10 +9,12 @@ from langgraph.checkpoint.postgres import PostgresSaver
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
 from langchain_groq import ChatGroq
 
+from dotenv import load_dotenv
+
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
 
-from dotenv import load_dotenv
+
 
 load_dotenv()
 
