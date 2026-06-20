@@ -1,3 +1,5 @@
 psycopg
 psycopg[binary]
 psycopg2-binary
+langgraph-checkpoint-postgres
+psycopg[binary,pool]
