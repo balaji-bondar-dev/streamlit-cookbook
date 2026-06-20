@@ -150,8 +150,11 @@ builder.add_edge("final_agent",END)
 # checkpointer.setup()
 
 graph = builder.compile()
-user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
+#user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
+user_input ={sys.argv[1]}
+# if len(sys.argv) > 1:
+#     print(f"Received input parameter: {sys.argv[1]}")
 
 config = {"configurable": {"thread_id": "1000"}}
 

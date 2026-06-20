@@ -6,7 +6,8 @@ import sys
 #st.title("Streamlit Subprocess Runner")
 
 # Input field to pass data to app.py
-user_param = st.text_input("", "Enter Travel Request...")
+#plan a 2 days japan trip including flights,hotels and sightseeing
+user_param = st.text_input("Travel Plan Request", "plan a 2 days japan trip including flights,hotels and sightseeing")
 
 if st.button("Generate My Travel Plan"):
     with st.spinner("Executing app.py..."):
