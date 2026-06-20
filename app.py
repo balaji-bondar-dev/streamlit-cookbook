@@ -1,8 +1,8 @@
 # import sys
 import os
 from dotenv import load_dotenv
-# from typing import TypedDict,Annotated
-# import operator
+from typing import TypedDict,Annotated
+import operator
 
 
 # from langgraph.graph import StateGraph,START,END
@@ -27,7 +27,7 @@ llm = ChatGroq(
     max_retries=2,
 )
 
-print(llm.invoke("What is the capital of France?"))
+#print(llm.invoke("What is the capital of France?"))
 messages = [
     SystemMessage(content="You are a helpful assistant.Answer in one sentence."),
     HumanMessage(content="What is the captial of france"),
