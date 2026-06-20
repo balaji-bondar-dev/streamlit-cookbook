@@ -143,13 +143,15 @@ builder.add_edge("hotel_agent","itinerary_agent")
 builder.add_edge("itinerary_agent","final_agent")
 builder.add_edge("final_agent",END)
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+#DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 
 _conn = psycopg.connect(DATABASE_URL)
 checkpointer = PostgresSaver(_conn)
 checkpointer.setup()
 
 graph = builder.compile(checkpointer=checkpointer)
+
 #user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
 user_input ={sys.argv[1]}
