@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from typing import TypedDict,Annotated
 import operator
-os.system("pip install groq")
 
 # from langgraph.graph import StateGraph,START,END
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
