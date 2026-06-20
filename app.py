@@ -4,11 +4,12 @@ from dotenv import load_dotenv
 from typing import TypedDict,Annotated
 import operator
 
+
 from langgraph.graph import StateGraph,START,END
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
 from langchain_groq import ChatGroq
+# from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
-from langgraph.checkpoint.postgres import PostgresSaver
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
@@ -122,13 +123,13 @@ builder.add_edge("hotel_agent","itinerary_agent")
 builder.add_edge("itinerary_agent","final_agent")
 builder.add_edge("final_agent",END)
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
 
-_conn = psycopg.connect(DATABASE_URL)
-checkpointer = PostgresSaver(_conn)
-checkpointer.setup()
+# _conn = psycopg.connect(DATABASE_URL)
+# checkpointer = PostgresSaver(_conn)
+# checkpointer.setup()
 
-graph = builder.compile(checkpointer=checkpointer)
+graph = builder.compile()
 user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
 
