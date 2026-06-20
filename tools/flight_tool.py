@@ -9,7 +9,7 @@ API_KEY = os.getenv("AVATIONSTACK_API_KEY")
 def search_flight(query):
     print(">>> Flight Search Processing...")
 
-    #url = "http://api.aviationstack.com/v1/flights"
+    url = "http://api.aviationstack.com/v1/flights"
     params = {"access_key":API_KEY,"limit":5}
 
     response = requests.get(url,params=params)
