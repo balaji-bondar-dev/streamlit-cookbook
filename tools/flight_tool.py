@@ -7,7 +7,7 @@ load_dotenv()
 API_KEY = os.getenv("AVATIONSTACK_API_KEY")
 
 def search_flight(query):
-    print(">>> Flight Search Processing...")
+    print(">>> flight search processing...")
 
     url = "http://api.aviationstack.com/v1/flights"
     params = {"access_key":API_KEY,"limit":5}
@@ -15,7 +15,7 @@ def search_flight(query):
     response = requests.get(url,params=params)
 
     data = response.json()
-    print(data)
+    #print(data)
 
     flights = []
 
@@ -33,5 +33,5 @@ def search_flight(query):
             Status : {status}
             """
         )
-        print(flights)
+        #print(flights)
         return "\n".join(flights)

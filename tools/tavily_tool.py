@@ -11,7 +11,7 @@ client = TavilyClient(
 query="london 5 days plan hotel booking"
 
 def tavily_search(query):
-    print(">>> Tavily Search Processing...")
+    print(">>> tavily search processing...")
     # Execute the search query with parameters
     response = client.search(query=query,max_results=5)
 
@@ -46,5 +46,5 @@ def tavily_search(query):
             """
         )
 
-    print(tavily_results)
+    #print(tavily_results)
     return "\n".join(tavily_results)
