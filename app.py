@@ -23,7 +23,7 @@ from tools.tavily_tool import tavily_search
 from tools.flight_tool import search_flight
 from dotenv import load_dotenv
 
-# from langgraph.checkpoint.postgres import PostgresSaver
+from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
 
 from tools.flight_tool import search_flight
@@ -143,13 +143,13 @@ builder.add_edge("hotel_agent","itinerary_agent")
 builder.add_edge("itinerary_agent","final_agent")
 builder.add_edge("final_agent",END)
 
-# DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# _conn = psycopg.connect(DATABASE_URL)
-# checkpointer = PostgresSaver(_conn)
-# checkpointer.setup()
+_conn = psycopg.connect(DATABASE_URL)
+checkpointer = PostgresSaver(_conn)
+checkpointer.setup()
 
-graph = builder.compile()
+graph = builder.compile(checkpointer=checkpointer)
 #user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
 user_input ={sys.argv[1]}
