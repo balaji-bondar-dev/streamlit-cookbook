@@ -1,5 +1,5 @@
 Application URL
-https://my-langgraph-application.streamlit.app/
+https://app-cookbook-jekrtvbdp7xnjgrnd4zmzw.streamlit.app/
 
 1. Overview
 

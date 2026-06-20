@@ -18,20 +18,18 @@ from langchain_core.messages import (
 )
 
 from langchain_groq import ChatGroq
-
-from tools.tavily_tool import tavily_search
-from tools.flight_tool import search_flight
-from dotenv import load_dotenv
-
 from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
+from psycopg_pool import ConnectionPool
 
-from tools.flight_tool import search_flight
-from tools.tavily_tool import tavily_search
+from src.tools.flight_tool import search_flight
+from src.tools.tavily_tool import tavily_search
+from src.graph.state import TravelState
+
+from dotenv import load_dotenv
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
-
 
 # # if len(sys.argv) > 1:
 # #     print(f"Received input parameter: {sys.argv[1]}")
@@ -146,20 +144,13 @@ builder.add_edge("final_agent",END)
 #DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 
-# _conn = psycopg.connect(DATABASE_URL)
-# checkpointer = PostgresSaver(_conn)
+# # Use a pool instead of a single connection
+# pool = ConnectionPool(conninfo=DATABASE_URL)
+# checkpointer = PostgresSaver(pool)
 # checkpointer.setup()
 
-
-from psycopg_pool import ConnectionPool
-
-
-# Use a pool instead of a single connection
-pool = ConnectionPool(conninfo=DATABASE_URL)
-checkpointer = PostgresSaver(pool)
-checkpointer.setup()
-
-graph = builder.compile(checkpointer=checkpointer)
+# graph = builder.compile(checkpointer=checkpointer)
+graph = builder.compile()
 
 #user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
