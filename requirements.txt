@@ -17,3 +17,4 @@ requests
 streamlit-authenticator
 dotenv
 groq>=0.37.
+langchain-groq
