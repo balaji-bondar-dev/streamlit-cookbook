@@ -13,7 +13,7 @@ from langchain_groq import ChatGroq
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
-
+os.system("pip install langchain-groq")
 load_dotenv()
 
 # if len(sys.argv) > 1:
