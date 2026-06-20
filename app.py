@@ -59,23 +59,23 @@ llm = ChatGroq(
 # # if len(sys.argv) > 1:
 # #     print(f"Received input parameter: {sys.argv[1]}")
 
-# llm = ChatGroq(
-#     model="llama-3.1-8b-instant", #llama-3.1-8b-instant,openai/gpt-oss-120b,openai/gpt-oss-20b
-#     temperature=0.0,
-#     max_tokens=None,
-#     timeout=None,
-#     max_retries=2,
-# )
+llm = ChatGroq(
+    model="llama-3.1-8b-instant", #llama-3.1-8b-instant,openai/gpt-oss-120b,openai/gpt-oss-20b
+    temperature=0.0,
+    max_tokens=None,
+    timeout=None,
+    max_retries=2,
+)
 
-# #print(llm.invoke("What is the capital of France?"))
-# messages = [
-#     SystemMessage(content="You are a helpful assistant.Answer in one sentence."),
-#     HumanMessage(content="What is the captial of france"),
-# ]
-# response = llm.invoke(messages)
-# # print("❯❯❯❯Final response ")
-# print({response.type})
-# print({response.content})
+#print(llm.invoke("What is the capital of France?"))
+messages = [
+    SystemMessage(content="You are a helpful assistant.Answer in one sentence."),
+    HumanMessage(content="What is the captial of france"),
+]
+response = llm.invoke(messages)
+# print("❯❯❯❯Final response ")
+print({response.type})
+print({response.content})
 
 # # class TravelState(TypedDict):
 # #     messages: Annotated[list[AnyMessage], operator.add]
