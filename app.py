@@ -7,8 +7,8 @@ import operator
 from langgraph.graph import StateGraph,START,END
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
 from langchain_groq import ChatGroq
-from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
+from langgraph.checkpoint.postgres import PostgresSaver
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
