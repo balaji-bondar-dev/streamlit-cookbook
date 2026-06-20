@@ -11,8 +11,8 @@ from langchain_groq import ChatGroq
 # from langgraph.checkpoint.postgres import PostgresSaver
 # import psycopg
 
-# from tools.flight_tool import search_flight
-# from tools.tavily_tool import tavily_search
+from tools.flight_tool import search_flight
+from tools.tavily_tool import tavily_search
 
 load_dotenv()
 
