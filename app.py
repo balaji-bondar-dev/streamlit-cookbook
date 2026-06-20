@@ -146,8 +146,17 @@ builder.add_edge("final_agent",END)
 #DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 
-_conn = psycopg.connect(DATABASE_URL)
-checkpointer = PostgresSaver(_conn)
+# _conn = psycopg.connect(DATABASE_URL)
+# checkpointer = PostgresSaver(_conn)
+# checkpointer.setup()
+
+
+from psycopg_pool import ConnectionPool
+
+
+# Use a pool instead of a single connection
+pool = ConnectionPool(conninfo=DATABASE_URL)
+checkpointer = PostgresSaver(pool)
 checkpointer.setup()
 
 graph = builder.compile(checkpointer=checkpointer)
@@ -158,7 +167,7 @@ user_input ={sys.argv[1]}
 # if len(sys.argv) > 1:
 #     print(f"Received input parameter: {sys.argv[1]}")
 
-config = {"configurable": {"thread_id": "1000"}}
+config = {"configurable": {"thread_id": "1001"}}
 
 final_result = graph.invoke(
     {
