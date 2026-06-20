@@ -4,11 +4,10 @@ from dotenv import load_dotenv
 from typing import TypedDict,Annotated
 import operator
 
-
 from langgraph.graph import StateGraph,START,END
-from langgraph.checkpoint.postgres import PostgresSaver
 from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
 from langchain_groq import ChatGroq
+from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
 
 from tools.flight_tool import search_flight
