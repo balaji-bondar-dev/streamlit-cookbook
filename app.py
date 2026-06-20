@@ -1,14 +1,9 @@
 '''
 # pip install langgraph langchain langchain-openai langchain-groq langchain-community langchain-tavily psycopg[binary] psycopg_pool python-dotenv tavily-python pip install requests streamlit
-
-# install PostgresSql and create database
-CREATE DATABASE langgraph_memory;  ( or open pgadmin4 and create database there )
 '''
 # LangGraph Multi-Agent Travel Booking System with Long-Term Memory
-
-# main.py
-
 import os
+import sys
 from typing import TypedDict, Annotated
 import operator
 
@@ -24,8 +19,8 @@ from langchain_core.messages import (
 
 from langchain_groq import ChatGroq
 
-#from tools.tavily_tool import tavily_search
-#from tools.flight_tool import search_flights
+from tools.tavily_tool import tavily_search
+from tools.flight_tool import search_flight
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -36,20 +31,8 @@ llm = ChatGroq(
     model="llama-3.3-70b-versatile"
 )
 
-
-
-
-# # import sys
-# import os
-# from dotenv import load_dotenv
-# from typing import TypedDict,Annotated
-# import operator
-
-# # from langgraph.graph import StateGraph,START,END
-# from langchain.messages import AnyMessage,HumanMessage,SystemMessage,AIMessage
-# from langchain_groq import ChatGroq
-# # from langgraph.checkpoint.postgres import PostgresSaver
-# # import psycopg
+# from langgraph.checkpoint.postgres import PostgresSaver
+import psycopg
 
 from tools.flight_tool import search_flight
 from tools.tavily_tool import tavily_search
