@@ -7,9 +7,18 @@ import sys
 from typing import TypedDict, Annotated
 import operator
 
-#import psycopg
+from src.tools.flight_tool import search_flight
+from src.tools.tavily_tool import tavily_search
+from src.graph.state import TravelState
+
+# from src.graph.node import flight_agent
+# from src.graph.node import hotel_agent
+# from src.graph.node import itinerary_agent
+# from src.graph.node import final_agent
+
+import psycopg
 from langgraph.graph import StateGraph, START, END
-#from langgraph.checkpoint.postgres import PostgresSaver
+from langgraph.checkpoint.postgres import PostgresSaver
 from langchain_core.messages import (
     AnyMessage,
     HumanMessage,
@@ -22,17 +31,10 @@ from langgraph.checkpoint.postgres import PostgresSaver
 import psycopg
 from psycopg_pool import ConnectionPool
 
-from src.tools.flight_tool import search_flight
-from src.tools.tavily_tool import tavily_search
-from src.graph.state import TravelState
-
 from dotenv import load_dotenv
 
 load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
-
-# # if len(sys.argv) > 1:
-# #     print(f"Received input parameter: {sys.argv[1]}")
 
 llm = ChatGroq(
     model="llama-3.1-8b-instant", #llama-3.1-8b-instant,openai/gpt-oss-120b,openai/gpt-oss-20b
@@ -59,6 +61,7 @@ class TravelState(TypedDict):
     hotel_results: str
     itinerary: str
     llm_calls: int
+
 
 def flight_agent(state:TravelState):
     print(">>> flight_agent called...")
@@ -133,9 +136,6 @@ builder.add_node("itinerary_agent",itinerary_agent)
 builder.add_node("final_agent",final_agent)
 
 builder.add_edge(START,"flight_agent")
-
-
-
 builder.add_edge("flight_agent","hotel_agent")
 builder.add_edge("hotel_agent","itinerary_agent")
 builder.add_edge("itinerary_agent","final_agent")
@@ -155,9 +155,6 @@ graph = builder.compile()
 #user_input = "plan a 2 days japan trip including flights,hotels and sightseeing"
 #user_input = input("Enter Travel Request: ")
 user_input ={sys.argv[1]}
-# if len(sys.argv) > 1:
-#     print(f"Received input parameter: {sys.argv[1]}")
-
 config = {"configurable": {"thread_id": "1001"}}
 
 final_result = graph.invoke(
