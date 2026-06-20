@@ -16,3 +16,4 @@ psycopg[binary]
 requests
 streamlit-authenticator
 dotenv
+groq>=0.37.
